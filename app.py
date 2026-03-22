@@ -540,14 +540,21 @@ def index():
 # App 1 Routes (Code Generator)
 # ---------------------------------------------------
 
-@app.route('https://unified-ai-workspace.vercel.app/api/code/generate', methods=['POST', 'OPTIONS'])
+@app.route('/api/code/generate', methods=['POST', 'OPTIONS'])
 def api_code_generate():
+    if request.method == "OPTIONS":
+        return "", 200
+
     goal = request.json.get('goal', '')
-    if not goal: return jsonify({"error": "No goal provided"}), 400
+    if not goal:
+        return jsonify({"error": "No goal provided"}), 400
+
     job_id = datetime.now().strftime("%Y%m%d_%H%M%S")
     threading.Thread(target=run_code_agent, args=(goal, job_id)).start()
-    return jsonify({"job_id": job_id})
 
+    return jsonify({"job_id": job_id}
+                  
+                  )
 @app.route('/api/code/status/<job_id>')
 def api_code_status(job_id):
     if job_id not in code_jobs: return jsonify({"error": "Job not found"}), 404
