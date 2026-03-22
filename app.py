@@ -540,7 +540,7 @@ def index():
 # App 1 Routes (Code Generator)
 # ---------------------------------------------------
 
-@app.route('/api/code/generate', methods=['POST', 'OPTIONS'])
+@app.route('https://unified-ai-workspace.vercel.app/api/code/generate', methods=['POST', 'OPTIONS'])
 def api_code_generate():
     goal = request.json.get('goal', '')
     if not goal: return jsonify({"error": "No goal provided"}), 400
