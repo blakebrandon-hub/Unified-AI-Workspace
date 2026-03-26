@@ -223,8 +223,7 @@ requests>=2.31.0
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/ai-workspace.git
-cd ai-workspace
+git clone https://github.com/blakebrandon-hub/5-in-1-AI-Workspace
 ```
 
 2. **Install dependencies**
